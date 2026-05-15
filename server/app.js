@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors');
 const mongodb = require('./db/mongo');
+const indexRouter = require('./routes/index');
 
 mongodb.initClientDbConnection();
 app.use(cors({
@@ -10,5 +11,6 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use('/', indexRouter);
 
 module.exports = app
