@@ -3,7 +3,7 @@ const Reservations = require('../models/reservations');
 //READ - Récupérer tous les réservations
 
 exports.getAll = async (req, res, next) => {
-    const catwayNumber = req.params.id
+    const catwayNumber = parseInt(req.params.id);
     try {
         let reservations = await Reservations.find({catwayNumber: catwayNumber});
         return res.status(200).json(reservations);
