@@ -7,7 +7,7 @@ const privateMiddleware = require('../middlewares/private');
 router.get('/', privateMiddleware.checkJWT, service.getAll);
 router.get('/:idReservation', privateMiddleware.checkJWT, service.getById);
 router.post('/', service.add);
-router.put('/', privateMiddleware.checkJWT, service.update);
+router.put('/:idReservation', privateMiddleware.checkJWT, service.update);
 router.delete('/:idReservation', privateMiddleware.checkJWT, service.delete);
 
 module.exports = router;

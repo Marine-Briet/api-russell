@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Le port de plaisance de Russell" />
+    <meta name="author" content="Russell" />
+    <title>Port de Plaisance de Russell</title>
+    <link href="/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-fluid mt-3">
+        <div class="row g-3">
+
+            <!-- Présentation -->
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header fw-bold">⚓ Port de Plaisance de Russell</div>
+                    <div class="card-body">
+                        <p>Bienvenue sur l'application de gestion du port de plaisance de Russell.</p>
+                        <p>Ce site est prévu pour les plaisanciers qui souhaitent réserver une place de port, consulter
+                            les services disponibles, ou simplement en savoir plus sur notre port de plaisance.</p>
+                        <p class="mb-0">Connectez-vous pour accéder à votre espace personnel.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/api-docs.html">Documentation de l'API</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulaire de connexion -->
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header fw-bold">🔑 Connexion</div>
+                    <div class="card-body">
+                        <div id="error-message" class="alert alert-danger d-none"></div>
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Adresse mail</label>
+                                <input type="email" class="form-control" id="email"
+                                    placeholder="adressemail@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Mot de passe</label>
+                                <input type="password" id="password" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <noscript>Vous devez activer JavaScript pour utiliser cette application.</noscript>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/javascripts/auth.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            })
+                .then(response => {
+                    const token = response.headers.get('Authorization');
+                    if (token) {
+                        setToken(token);
+                        window.location.href = '/dashboard.html';
+                    } else {
+                        const errorDiv = document.getElementById('error-message');
+                        errorDiv.textContent = 'Email ou mot de passe incorrect.';
+                        errorDiv.classList.remove('d-none');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la connexion:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>
