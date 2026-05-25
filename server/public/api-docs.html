@@ -18,25 +18,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav w-100">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./dashboard.html">Tableau de bord</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./catways.html">Catways</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./reservations.html">Réservations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./users.html">Users</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="./api-docs.html">Documentation</a>
-                        </li>
-                        <li class="nav-item ms-auto">
-                            <a class="nav-link" href="./index.html" id="logout">Se déconnecter</a>
-                        </li>
+                    <ul class="navbar-nav w-100" id="nav-links">
                     </ul>
                 </div>
             </div>
@@ -209,12 +191,28 @@
     <script src="/javascripts/auth.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const token = getToken();
+            const navLinks = document.getElementById('nav-links');
 
-            document.getElementById('logout').addEventListener('click', function (e) {
-                e.preventDefault();
-                removeToken();
-                window.location.href = '/index.html';
-            });
+            if (token) {
+                navLinks.innerHTML = `
+                    <li class="nav-item"><a class="nav-link" href="./dashboard.html">Tableau de bord</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./catways.html">Catways</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./reservations.html">Réservations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./users.html">Users</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="./api-docs.html">Documentation</a></li>
+                    <li class="nav-item ms-auto"><a class="nav-link" href="./index.html" id="logout">Se déconnecter</a></li>
+                `;
+                document.getElementById('logout').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    removeToken();
+                    window.location.href = '/index.html';
+                });
+            } else {
+                navLinks.innerHTML = `
+                    <li class="nav-item ms-auto"><a class="nav-link" href="./index.html">Se connecter</a></li>
+                `;
+            }
         });
     </script>
 </body>
