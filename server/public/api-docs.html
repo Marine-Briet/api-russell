@@ -209,11 +209,6 @@
     <script src="/javascripts/auth.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const token = getToken();
-            if (!token) {
-                window.location.href = '/index.html';
-                return;
-            }
 
             document.getElementById('logout').addEventListener('click', function (e) {
                 e.preventDefault();
