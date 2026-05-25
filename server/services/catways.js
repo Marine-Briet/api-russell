@@ -74,7 +74,7 @@ exports.update = async (req, res, next) => {
 
 // DELETE - Supprimer un catway
 exports.delete = async (req, res, next) => {
-    const catwayNumber = req.params.catwayNumber;
+    const catwayNumber = parseInt(req.params.id);
 
     try {
         await Catways.deleteOne({ catwayNumber: catwayNumber });

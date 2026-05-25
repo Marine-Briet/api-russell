@@ -82,13 +82,11 @@
   <script src="/javascripts/auth.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      console.log('DOM chargé');
       const today = new Date();
       const formattedDate = today.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
       document.getElementById('date').textContent = formattedDate;
 
       const token = getToken();
-      console.log('token:', token);
       if (!token) {
         window.location.href = '/index.html';
         return;
@@ -115,7 +113,6 @@
             })
               .then(response => response.json())
               .then(reservations => {
-                console.log(reservations)
                 reservations.forEach(reservation => {
                   const row = `<tr>
                                 <td>${reservation.catwayNumber}</td>
