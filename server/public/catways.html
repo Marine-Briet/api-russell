@@ -20,7 +20,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav w-100">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="./dashboard.html">Tableau de bord</a>
                         </li>
@@ -36,7 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./api-docs.html">Documentation</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ms-auto">
                             <a class="nav-link" href="./index.html" id="logout">Se déconnecter</a>
                         </li>
                     </ul>
@@ -45,43 +45,59 @@
         </nav>
     </div>
 
-    <div id="catways-list-card">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Numéro du catway</th>
-                    <th scope="col">Type du catway</th>
-                    <th scope="col">Etat du catway</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
+    <div class="container-fluid mt-3">
+        <div class="row g-3">
 
-    <div id="catway-create-card">
-        <form id="createCatwayForm">
-            <div class="mb-3">
-                <label for="number" class="form-label">Numéro du catway</label>
-                <input type="number" class="form-control" id="number" aria-describedby="numberHelp">
+            <!-- Tableau à gauche -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header fw-bold">Liste des catways</div>
+                    <div class="card-body p-0">
+                        <div id="catways-list-card" class="table-responsive">
+                            <table class="table table-bordered table-hover mb-0">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Numéro du catway</th>
+                                        <th>Type du catway</th>
+                                        <th>Etat du catway</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="mb-3">
-                <label for="catwayType" class="form-label">Type de catway</label>
-                <select class="form-select" id="catwayType">
-                    <option value="long">Long</option>
-                    <option value="short">Short</option>
-                </select>
+            <!-- Formulaire à droite -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header fw-bold">Créer un nouveau catway</div>
+                    <div class="card-body" id="catway-create-card">
+                        <form id="createCatwayForm">
+                            <div class="mb-3">
+                                <label for="number" class="form-label">Numéro du catway</label>
+                                <input type="number" class="form-control" id="number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="catwayType" class="form-label">Type de catway</label>
+                                <select class="form-select" id="catwayType">
+                                    <option value="long">Long</option>
+                                    <option value="short">Short</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="state" class="form-label">Etat du catway</label>
+                                <input type="text" class="form-control" id="state">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Créer</button>
+                        </form>
+                    </div>
+                </div>
             </div>
 
-            <div class="mb-3">
-                <label for="text" class="form-label">Etat du catway</label>
-                <input type="text" class="form-control" id="state" aria-describedby="stateHelp">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Créer</button>
-        </form>
+        </div>
     </div>
 
 
