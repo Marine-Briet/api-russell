@@ -13,6 +13,13 @@ The Russell marina wanted a web application to manage its catways and the reserv
 - **A private REST API** (Node.js, Express, MongoDB) exposing full CRUD operations on users, catways and reservations, secured with JWT authentication.
 - **A lightweight front-end** (HTML, Bootstrap, vanilla JavaScript) served by the same Express server, allowing the harbour staff to log in and manage the data from a browser.
 
+<p align="center">
+  <img src="docs/screenshots/Home.jpg" alt="Home" width="280">
+  <img src="docs/screenshots/Dashboard.jpg" alt="Dashboard" width="280">
+  <img src="docs/screenshots/catways.jpg" alt="Catways" width="280">
+</p>
+
+
 ---
 
 ## ✨ Features

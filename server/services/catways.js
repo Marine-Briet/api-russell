@@ -14,7 +14,7 @@ exports.getAll = async (req, res, next) => {
 
 //READ - Récupérer un catway par son numéro de catway
 exports.getByNumber = async (req, res, next) => {
-    const catwayNumber = req.params.catwayNumber;
+    const catwayNumber = req.params.id;
     
     try {
         let catways = await Catways.findOne({ catwayNumber: catwayNumber });
