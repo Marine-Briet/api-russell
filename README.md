@@ -14,9 +14,9 @@ The Russell marina wanted a web application to manage its catways and the reserv
 - **A lightweight front-end** (HTML, Bootstrap, vanilla JavaScript) served by the same Express server, allowing the harbour staff to log in and manage the data from a browser.
 
 <p align="center">
-  <img src="docs/screenshots/Home.jpg" alt="Home" width="400">
-  <img src="docs/screenshots/Dashboard.jpg" alt="Dashboard" width="400">
-  <img src="docs/screenshots/catways.jpg" alt="Catways" width="400">
+  <img src="docs/screenshots/Home.jpg" alt="Home" width="600">
+  <img src="docs/screenshots/Dashboard.jpg" alt="Dashboard" width="600">
+  <img src="docs/screenshots/catways.jpg" alt="Catways" width="600">
 </p>
 
 
