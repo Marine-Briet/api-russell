@@ -130,6 +130,7 @@ api-russell/
     ├── db/                 # MongoDB connection
     ├── models/             # Mongoose schemas (User, Catway, Reservation)
     ├── services/           # Business logic per entity
+    ├── scripts/            # Demo data seed script
     ├── routes/             # Express routers
     ├── middlewares/        # JWT verification
     └── public/             # Front-end (HTML pages, CSS, JavaScript)
@@ -178,15 +179,16 @@ The API and the management interface are available at `http://localhost:8000`.
 | `npm run prod` | `env/.env.prod` |
 | `npm start` | `env/.env` (with the Node inspector enabled) |
 
-### 4. Create a first user
+### 4. Load the demo data
 
 ```bash
-curl -X POST http://localhost:8000/users \
-  -H "Content-Type: application/json" \
-  -d '{"username": "Admin", "email": "admin@example.com", "password": "yourpassword"}'
+cd server
+npm run seed
 ```
 
-You can then log in from the home page.
+This creates a demo account, 4 catways and 3 reservations (dates are relative to the current day). The script can be run several times safely: existing data is never deleted or duplicated.
+
+**Demo account:** `admin@russell.fr` / `Russell2026`
 
 ---
 
